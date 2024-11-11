@@ -1,0 +1,56 @@
+{
+  "name": "Prefilled feature",
+  "description": "Creates a new prefilled Flutter feature",
+  "param": [
+    "name"
+  ],
+  "selectParam": [],
+  "addFile": [
+    {
+      "name": "{name}[-s]_bloc.dart",
+      "path": "{name}[-s]/bloc",
+      "fileTemplatePath": "files/bloc.tm"
+    },
+    {
+      "name": "{name}[-s]_event.dart",
+      "path": "{name}[-s]/bloc",
+      "fileTemplatePath": "files/bloc_event.tm"
+    },
+    {
+      "name": "{name}[-s]_state.dart",
+      "path": "{name}[-s]/bloc",
+      "fileTemplatePath": "files/bloc_state.tm"
+    },
+    {
+      "name": "{name}[-s]_rest_client.dart",
+      "path": "{name}[-s]/clients",
+      "fileTemplatePath": "files/client.tm"
+    },
+    {
+      "name": "{name}[-s]_repository.dart",
+      "path": "{name}[-s]/repository",
+      "fileTemplatePath": "files/repository.tm"
+    },
+    {
+      "name": "{name}[-s]_repository_impl.dart",
+      "path": "{name}[-s]/repository",
+      "fileTemplatePath": "files/repository_impl.tm"
+    },
+    {
+      "name": "{name}[-s]_view.dart",
+      "path": "{name}[-s]/view",
+      "fileTemplatePath": "files/view.tm"
+    },
+    {
+      "name": "",
+      "path": "{name}[-s]/view/widgets",
+      "fileTemplatePath": ""
+    },
+    {
+      "name": "",
+      "path": "{name}[-s]/models",
+      "fileTemplatePath": ""
+    }
+  ],
+  "globalBasePath": ""
+}

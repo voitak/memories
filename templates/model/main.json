@@ -1,0 +1,16 @@
+{
+  "name": "Model",
+  "description": "Creates a new Freezed Flutter Model template",
+  "param": [
+    "name"
+  ],
+  "selectParam": [],
+  "addFile": [
+    {
+      "name": "{name}[-s].dart",
+      "path": "{name}[-s]/",
+      "fileTemplatePath": "model.tm"
+    }
+  ],
+  "globalBasePath": ""
+}
