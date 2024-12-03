@@ -51,6 +51,7 @@ dependencies:
   google_fonts: ^6.2.1
   shimmer: ^3.0.0
   webview_flutter: ^4.9.0
+  super_sliver_list: ^0.4.1
 
 dev_dependencies:
   flutter_test:

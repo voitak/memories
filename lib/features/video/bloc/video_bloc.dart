@@ -2,33 +2,34 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc_side_effect/flutter_bloc_side_effect.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:memories/features/video/repository/video_repository.dart';
 
-part '{name}[-s]_bloc.freezed.dart';
+part 'video_bloc.freezed.dart';
 
-part '{name}[-s]_event.dart';
+part 'video_event.dart';
 
-part '{name}[-s]_state.dart';
+part 'video_state.dart';
 
-part '{name}[-s]_side_effect.dart';
+part 'video_side_effect.dart';
 
-class {name}[-C]Bloc extends Bloc<{name}[-C]Event, {name}[-C]State>
-    with BlocSideEffectMixin<{name}[-C]Event, {name}[-C]State, {name}[-C]SideEffect>{
-  {name}[-C]Bloc({
-    required {name}[-C]Repository repository,
+class VideoBloc extends Bloc<VideoEvent, VideoState>
+    with BlocSideEffectMixin<VideoEvent, VideoState, VideoSideEffect>{
+  VideoBloc({
+    required VideoRepository repository,
   })  : _repository = repository,
-        super(const {name}[-C]State.initial()) {
-    on<{name}[-C]Event>(
+        super(const VideoState.initial()) {
+    on<VideoEvent>(
       (event, emitter) => event.map(
         initialize: (event) => _initialize(event, emitter),
       ),
     );
   }
 
-  final {name}[-C]Repository _repository;
+  final VideoRepository _repository;
 
   Future<void> _initialize(
-    _Initialize{name}[-C]Event event,
-    Emitter<{name}[-C]State> emitter,
+    _InitializeVideoEvent event,
+    Emitter<VideoState> emitter,
   ) async {
     try {
         

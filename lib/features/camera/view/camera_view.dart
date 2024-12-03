@@ -3,21 +3,22 @@ import 'package:flutter_bloc_side_effect/flutter_bloc_side_effect.dart';
 import 'package:memories/app/extensions/context.dart';
 import 'package:memories/app/widgets/app_bar/template_app_bar.dart';
 import 'package:memories/app/widgets/wrappers/paddings.dart';
+import 'package:memories/features/camera/bloc/camera_bloc.dart';
 
-class {name}[-C]View extends StatelessWidget {
-  const {name}[-C]View({super.key});
+class CameraView extends StatelessWidget {
+  const CameraView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumerWithSideEffects<{name}[-C]Bloc, {name}[-C]State,
-    {name}[-C]SideEffect>(
-      bloc: context.dependencies.{name}[-c]Bloc,
+    return BlocConsumerWithSideEffects<CameraBloc, CameraState,
+        CameraSideEffect>(
+      bloc: context.dependencies.cameraBloc,
       listener: (context, state) {},
       sideEffectsListener: (context, sideEffect) {},
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           appBar: TemplateAppBar(
-           title: Text('{name}[-C]'),
+            title: Text('Camera'),
           ),
           body: CommonPadding(
             child: Column(

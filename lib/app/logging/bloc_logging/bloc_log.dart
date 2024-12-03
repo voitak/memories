@@ -5,8 +5,8 @@ import 'dart:ui';
 
 import 'package:flutter_bloc_side_effect/flutter_bloc_side_effect.dart';
 import 'package:memories/app/logging/log_hub.dart';
-import 'package:memories/features/auth/bloc/auth_bloc.dart';
-import 'package:memories/features/location/bloc/location_bloc.dart';
+import 'package:memories/features/camera/bloc/camera_bloc.dart';
+import 'package:memories/features/gallery/bloc/gallery_bloc.dart';
 
 enum BlocLogLevel {
   /// Disable all logs
@@ -59,6 +59,6 @@ BlocLogLevel _blocLogLevelFromType(Object type) {
 /// Append all new BLoCs here to let them log on changes.
 /// By default there will be no logs at all for new BLoCs.
 const Map<Object, BlocLogLevel> _blocLogLevelsMap = {
-  AuthBloc: BlocLogLevel.normal,
-  LocationBloc: BlocLogLevel.normal,
+  GalleryBloc: BlocLogLevel.normal,
+  CameraBloc: BlocLogLevel.normal,
 };

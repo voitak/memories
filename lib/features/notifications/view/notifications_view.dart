@@ -3,21 +3,22 @@ import 'package:flutter_bloc_side_effect/flutter_bloc_side_effect.dart';
 import 'package:memories/app/extensions/context.dart';
 import 'package:memories/app/widgets/app_bar/template_app_bar.dart';
 import 'package:memories/app/widgets/wrappers/paddings.dart';
+import 'package:memories/features/notifications/bloc/notifications_bloc.dart';
 
-class {name}[-C]View extends StatelessWidget {
-  const {name}[-C]View({super.key});
+class NotificationsView extends StatelessWidget {
+  const NotificationsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumerWithSideEffects<{name}[-C]Bloc, {name}[-C]State,
-    {name}[-C]SideEffect>(
-      bloc: context.dependencies.{name}[-c]Bloc,
+    return BlocConsumerWithSideEffects<NotificationsBloc, NotificationsState,
+        NotificationsSideEffect>(
+      bloc: context.dependencies.notificationsBloc,
       listener: (context, state) {},
       sideEffectsListener: (context, sideEffect) {},
       builder: (context, state) {
-        return Scaffold(
+        return const Scaffold(
           appBar: TemplateAppBar(
-           title: Text('{name}[-C]'),
+            title: Text('Notifications'),
           ),
           body: CommonPadding(
             child: Column(
