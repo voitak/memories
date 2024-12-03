@@ -32,6 +32,9 @@ dependencies:
   permission_handler: ^11.3.1
   theme_tailor: ^3.0.1
   email_validator: ^3.0.0
+  jwt_decoder: ^2.0.1
+  flutter_cache_manager: ^3.4.1
+  pdf_render: ^1.4.12
 
   # http
   dio: ^5.7.0
@@ -48,8 +51,6 @@ dependencies:
   google_fonts: ^6.2.1
   shimmer: ^3.0.0
   webview_flutter: ^4.9.0
-  flutter_cache_manager: ^3.4.1
-  pdf_render: ^1.4.12
 
 dev_dependencies:
   flutter_test:

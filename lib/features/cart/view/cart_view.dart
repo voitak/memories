@@ -29,7 +29,7 @@ class CartView extends StatelessWidget {
           children: [
             TextButton(
               style: ButtonStyle(
-                textStyle: MaterialStateProperty.all(context.styles.h1),
+                textStyle: WidgetStateProperty.all(context.styles.h1),
               ),
               onPressed: () {
                 GoRouter.of(context).push('/cart/detail_view');

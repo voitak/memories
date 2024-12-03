@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:memories/app/core/app_meta_data.dart';
+import 'package:memories/app/models/app_meta_data.dart';
 import 'package:memories/app/theme/app_theme_data.dart';
 import 'package:memories/app/widgets/app_version.dart';
 import 'package:package_info_plus/package_info_plus.dart';

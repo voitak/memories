@@ -4,6 +4,7 @@ import 'package:memories/app/logging/bloc_logging/bloc_log.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
+
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     handleBlocChange(bloc, change);

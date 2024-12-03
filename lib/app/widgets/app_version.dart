@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:memories/app/core/app_meta_data.dart';
+import 'package:memories/app/models/app_meta_data.dart';
 import 'package:memories/app/theme/app_theme_extensions.dart';
 
 class AppVersion extends StatelessWidget {
