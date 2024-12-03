@@ -10,7 +10,7 @@ class AppStats {
   }) : _prefs = prefs;
 
   final SharedPreferences _prefs;
-  late final int _startsCounter;
+  late int _startsCounter;
   final initializationCompleter = Completer<void>();
 
   /// Initializes the app stats instance.

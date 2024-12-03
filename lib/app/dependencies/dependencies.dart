@@ -32,8 +32,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 typedef _InitializationStep = FutureOr<void> Function(
-    DevDependencies dependencies,
-    );
+  DevDependencies dependencies,
+);
 
 abstract interface class Dependencies {
   factory Dependencies.of(BuildContext context) =>
@@ -69,7 +69,6 @@ abstract interface class Dependencies {
 }
 
 final class DevDependencies implements Dependencies {
-
   // CORE
   @override
   late final Env env;
@@ -141,9 +140,7 @@ final class DevDependencies implements Dependencies {
       onProgress?.call(progress, step.key);
       if (kDebugMode) {
         debugPrint(
-          'Initialization | ${currentStep.formatted}/${totalSteps
-              .formatted} (${NumberFormat.percentPattern().format(
-              progress)}) | "${step.key}"',
+          'Initialization | ${currentStep.formatted}/${totalSteps.formatted} (${NumberFormat.percentPattern().format(progress)}) | "${step.key}"',
         );
       }
       await step.value(dependencies);
@@ -152,12 +149,22 @@ final class DevDependencies implements Dependencies {
   }
 
   static final Map<String, _InitializationStep> _initializationSteps =
-  <String, _InitializationStep>{
+      <String, _InitializationStep>{
+    'Shared preferences initialization': (dependencies) async =>
+        dependencies.prefs = await SharedPreferences.getInstance(),
+    'Secure storage initialization': (DevDependencies dependencies) async {
+      await const FlutterSecureStorage().readAll();
+      dependencies.secureStorage = const FlutterSecureStorage();
+    },
+    'App stats initialization': (dependencies) async {
+      dependencies.appStats = AppStats(prefs: dependencies.prefs);
+      await dependencies.appStats.initialize();
+    },
     'Environment initialization': (dependencies) async {
       Env.env =
-      const String.fromEnvironment('env', defaultValue: 'dev') == 'dev'
-          ? Environment.dev
-          : Environment.prod;
+          const String.fromEnvironment('env', defaultValue: 'dev') == 'dev'
+              ? Environment.dev
+              : Environment.prod;
       switch (Env.env) {
         case Environment.dev:
           await dotenv.load(fileName: '.configs/dev/configs.env');
@@ -173,16 +180,7 @@ final class DevDependencies implements Dependencies {
         buildNumber: packageInfo.buildNumber,
       );
     },
-    'Shared preferences initialization': (dependencies) async =>
-    dependencies.prefs = await SharedPreferences.getInstance(),
-    'Secure storage initialization': (DevDependencies dependencies) async {
-      await const FlutterSecureStorage().readAll();
-      dependencies.secureStorage = const FlutterSecureStorage();
-    },
-    'App stats initialization': (dependencies) async {
-      dependencies.appStats = AppStats(prefs: dependencies.prefs);
-      await dependencies.appStats.initialize();
-    },
+
     'Camera initialization': (dependencies) {
       dependencies
         ..cameraRepository = CameraRepositoryImpl()
@@ -215,21 +213,21 @@ final class DevDependencies implements Dependencies {
     'Notifications initialization': (dependencies) {
       dependencies
         ..notificationsDio = Dio(getDioOptions(dependencies.env.authBaseUrl))
-        ..notificationsRestClient = NotificationsRestClient(
-            dependencies.notificationsDio)
+        ..notificationsRestClient =
+            NotificationsRestClient(dependencies.notificationsDio)
         ..notificationsRepository = NotificationsRepositoryImpl(
           client: dependencies.notificationsRestClient,
         )
         ..notificationsBloc = NotificationsBloc(
           repository: dependencies.notificationsRepository,
         );
-      dependencies.notificationsDio.interceptors.addAll(
-          [DioLogInterceptor.normal()]);
+      dependencies.notificationsDio.interceptors
+          .addAll([DioLogInterceptor.normal()]);
       dependencies.notificationsBloc.add(const NotificationsEvent.initialize());
     },
     // TODO(All): remove in real project
     'Initialization complete': (_) =>
-    Future<void>.delayed(const Duration(seconds: 1)),
+        Future<void>.delayed(const Duration(seconds: 1)),
   };
 }
 

@@ -5,8 +5,23 @@ import 'package:memories/app/widgets/app_bar/template_app_bar.dart';
 import 'package:memories/app/widgets/wrappers/paddings.dart';
 import 'package:memories/features/gallery/bloc/gallery_bloc.dart';
 
-class GalleryView extends StatelessWidget {
+class GalleryView extends StatefulWidget {
   const GalleryView({super.key});
+
+  @override
+  State<GalleryView> createState() => _GalleryViewState();
+}
+
+class _GalleryViewState extends State<GalleryView> {
+  // ignore: dispose-fields
+  late final GalleryBloc galleryBloc;
+
+  @override
+  void initState() {
+    super.initState();
+    galleryBloc = GalleryBloc(repository: context.dependencies.galleryRepository)
+      ..add(const GalleryEvent.initialize());
+  }
 
   @override
   Widget build(BuildContext context) {

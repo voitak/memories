@@ -16,7 +16,7 @@ final class AppRouter {
 
   late final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
-    initialLocation: '/location',
+    initialLocation: '/gallery',
     observers: [GoRouterNavigationObserver()],
     routes: [
       StatefulShellRoute.indexedStack(
